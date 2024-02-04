@@ -1,5 +1,5 @@
 # 定制镜像都是基于 FROM 的镜像
-FROM centos
+# FROM centos
 # FROM golang:alpine
 
 # 注意： RUN 每执行一次，都会创建一层镜像，会导致镜像太大，可以使用  && 连接多个命令。eg:
@@ -30,6 +30,9 @@ FROM centos
 # 在容器目录 /dist 创建一个目录为 src
 # RUN mkdir src .
 
+# 添加文件到容器中
+ADD ./web-action web-action
+
 # 暴露端口
 EXPOSE 8089
 
@@ -37,5 +40,5 @@ EXPOSE 8089
 # CMD ["/root/web-action/web-action"]
 
 # 运行 golang 程序的命令
-ENTRYPOINT ["/root/web-action/web-action"]
+ENTRYPOINT ["/web-action"]
 
